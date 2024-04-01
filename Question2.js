@@ -7,7 +7,7 @@ function generateArrayBetween(start, end) {
     let current = start;
     
     // Loop until the current number reaches the end number
-    while (current <= end || current >= end) {
+    while (step > 0 ? current <= end : current >= end) {
         // Add the current number to the array
         numbers.push(current);
         
