@@ -1,3 +1,10 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
 // Simple function to check if a number is prime
 function isPrime(number) {
     // 0 and 1 are not prime numbers
@@ -17,3 +24,20 @@ function filterPrimes(array) {
     // Use the filter method to create a new array with only prime numbers
     return array.filter(isPrime);
 }
+
+// Prompt user to enter a list of numbers separated by commas
+rl.question('Enter a list of numbers separated by commas: ', (input) => {
+    // Split the input string into an array of strings
+    let inputArray = input.split(',');
+
+    // Convert the array of strings into an array of numbers
+    let numbersArray = inputArray.map(str => parseInt(str.trim()));
+
+    // Filter prime numbers from the array
+    let primeNumbers = filterPrimes(numbersArray);
+
+    // Output the prime numbers
+    console.log("Prime numbers in the list:", primeNumbers);
+
+    rl.close();
+});

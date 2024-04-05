@@ -1,22 +1,26 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+// Function to swap the case of each character in a string
 function swapCase(inputString) {
-    // Initialize an empty string to store the result
-    let result = "";
-    
-    // Iterate over each character in the input string
-    for (let i = 0; i < inputString.length; i++) {
-        // Get the current character
-        let char = inputString[i];
-        
-        // Check if the character is uppercase
-        if (char === char.toUpperCase()) {
-            // Convert the character to lowercase and append it to the result
-            result += char.toLowerCase();
-        } else {
-            // Convert the character to uppercase and append it to the result
-            result += char.toUpperCase();
-        }
-    }
-    
-    // Return the result string
-    return result;
+    // Using regular expression to replace alphabetic characters with their swapped case
+    return inputString.replace(/[a-zA-Z]/g, function(char) {
+        // If character is lowercase, convert to uppercase; otherwise, convert to lowercase
+        return char === char.toLowerCase() ? char.toUpperCase() : char.toLowerCase();
+    });
 }
+
+
+// Using readline to get user input
+rl.question('Enter a string: ', (inputString) => {
+    // Calling the swapCase function with the user input string
+    let outputString = swapCase(inputString);
+    // Output the swapped string
+    console.log(outputString);
+    // Close the readline interface
+    rl.close();
+});

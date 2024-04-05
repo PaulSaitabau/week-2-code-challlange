@@ -1,20 +1,21 @@
-function generateArrayBetween(start, end) {
-    // Initialize an empty array to store the numbers
-    let numbers = [];
-    
-    // Determine the starting point and the step based on the direction
-    let step = start < end ? 1 : -1;
-    let current = start;
-    
-    // Loop until the current number reaches the end number
-    while (step > 0 ? current <= end : current >= end) {
-        // Add the current number to the array
-        numbers.push(current);
-        
-        // Move to the next number in the sequence
-        current += step;
+// Function to generate an array of numbers from start to end (inclusive)
+function generateArray(start, end) {
+    // Initialize an empty array to store the generated numbers
+    let array = [];
+    // Loop from start to end (inclusive)
+    for (let i = start; i <= end; i++) {
+        // Push each number into the array
+        array.push(i);
     }
-    
-    // Return the array of numbers
-    return numbers;
+    // Return the generated array
+    return array;
 }
+
+// Example usage
+// Generating an array from 4 to 7 (inclusive)
+let result = generateArray(4, 7);
+console.log(result); // Output: [4, 5, 6, 7]
+
+// Generating an array from -4 to 7 (inclusive)
+result = generateArray(-4, 7);
+console.log(result); // Output: [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
